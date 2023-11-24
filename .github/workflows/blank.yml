@@ -18,6 +18,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+          user-email: "matkivskiy761@gmail.com"
+          user-name: "Shadozx"
 
       - name: Build with Maven
         run: mvn clean install
