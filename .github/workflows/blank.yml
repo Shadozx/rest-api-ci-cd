@@ -22,11 +22,11 @@ jobs:
       
       - name: Grant execute permission to Maven wrapper
         run: |
-          chmod +x mvnw
+          chmod 755 ./mvnw
 
       - name: Build and Test
         run: |
-          ./mvnw clean install
+          ./mvnw clean package
 
       - name: Run Unit Tests
         run: |
