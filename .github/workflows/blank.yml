@@ -11,46 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
-          java-version: '17'
           distribution: 'adopt'
+          java-version: '17'
 
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Run unit tests
-        run: mvn test
-
-      - name: Update project code
+      - name: Build and Test
         run: |
-          git add --all
-          git commit -m "Update project code"
-          git push origin main
+          ./mvnw clean install
 
-  deploy:
-    needs: build
-    if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/main' }}
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: mvn install
-
-      - name: Create project build
-        run: mvn package
-
-      - name: Deploy to server
-        run: scp target/*.war username@server_ip:/path/to/deploy/directory
-
-      - name: Verify deployment
-        run: ssh username@server_ip 'tail -1 /path/to/server.log'
+      - name: Run Unit Tests
+        run: |
+          ./mvnw test
