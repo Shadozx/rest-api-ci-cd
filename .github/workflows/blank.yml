@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up JDK 17
@@ -20,14 +20,14 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
       
-      - name: Grant execute permission to Maven wrapper
+      - name: Grant execute permission to Maven
         run: |
           chmod 755 ./mvnw
 
-      - name: Build and Test
+      - name: Install dependecies
         run: |
           ./mvnw clean package
 
-      - name: Run Unit Tests
+      - name: Run unit tests
         run: |
           ./mvnw test
