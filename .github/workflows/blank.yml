@@ -19,15 +19,16 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
-      
-      - name: Grant execute permission to Maven
-        run: |
-          chmod 755 ./mvnw
+          
+      - name: Show directory
+        run: 'pwd'
+
+      - name: List files
+        run: 'ls -al'
+        
 
       - name: Install dependecies
-        run: |
-          ./mvnw clean package
+        run: './mvnw clean package'
 
       - name: Run unit tests
-        run: |
-          ./mvnw test
+        run: './mvnw test'
