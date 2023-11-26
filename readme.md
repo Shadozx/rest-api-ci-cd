@@ -1,3 +1,5 @@
+[![Java CI/CD](https://github.com/Shadozx/rest-api-ci-cd/actions/workflows/blank.yml/badge.svg)](https://github.com/Shadozx/rest-api-ci-cd/actions/workflows/blank.yml)
+
 ## Prerequisites:
 - Java JDK version 17+ should be installed in the system
 
